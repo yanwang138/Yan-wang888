@@ -3219,6 +3219,53 @@ e.g., "newURL" and "oldURL".
 naming. [[!HTML]]
 
 
+<h3 id=urlhost-class>URLHost class</h3>
+
+<pre class=idl>
+[Constructor(USVString host),
+ Exposed=(Window,Worker)]
+interface URLHost {
+  readonly attribute URLHostType type;
+
+  stringifier USVString toJSON();
+};
+
+enum URLHostType { "ipv4", "ipv6", "domain" };</pre>
+
+<p>Each {{URLHost}} object has an associated <dfn for=URLHost>host</dfn> (a <a for=/>host</a>).
+
+<hr>
+
+<p>The <dfn constructor for=URLHost><code>URLHost(<var>input</var>)</code></dfn> constructor, when
+invoked, must run these steps:
+
+<ol>
+ <li><p>Let <var>host</var> be the result of <a>host parsing</a> <var>input</var> with true.
+
+ <li><p>If <var>host</var> is failure, then <a>throw</a> a {{TypeError}}.
+
+ <li><p>Return a new {{URLHost}} object whose <a for=URLHost>host</a> is <var>host</var>.
+</ol>
+
+<p>The <dfn attribute for=URLHost><code>type</code></dfn> attribute's getter, must run these steps:
+
+<ol>
+ <li><p>If <a>this</a>'s <a for=URLHost>host</a> is an <a>IPv4 address</a>, then return
+ "<code>ipv4</code>".
+
+ <li><p>If <a>this</a>'s <a for=URLHost>host</a> is an <a>IPv6 address</a>, then return
+ "<code>ipv6</code>".
+
+ <li><p>Assert: <a>this</a>'s <a for=URLHost>host</a> is an <a>domain</a>.
+
+ <li><p>Return "<code>domain</code>".
+</ol>
+
+<p>The <dfn for=URLHost>stringification behavior</dfn> and
+<dfn method for=URLHost><code>toJSON()</code></dfn> method, when invoked, must return <a>this</a>'s
+<a for=URLHost>host</a>, <a lt="host serializer">serialized</a>.
+
+
 
 <h2 id=acknowledgments class=no-num>Acknowledgments</h2>
 
@@ -3317,8 +3364,9 @@ Trevor Rowbotham,
 Valentin Gosu,
 Vyacheslav Matva,
 Wei Wang,
-山岸和利 (Yamagishi Kazutoshi), and
-成瀬ゆい (Yui Naruse)
+山岸和利 (Yamagishi Kazutoshi),
+成瀬ゆい (Yui Naruse), and
+Zach Lym
 for being awesome!
 
 <p>This standard is written by

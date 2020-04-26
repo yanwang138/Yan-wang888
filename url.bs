@@ -3222,9 +3222,10 @@ naming. [[!HTML]]
 <h3 id=urlhost-class>URLHost class</h3>
 
 <pre class=idl>
-[Constructor(USVString host),
- Exposed=(Window,Worker)]
+[Exposed=(Window,Worker)]
 interface URLHost {
+  constructor(USVString host);
+
   readonly attribute URLHostType type;
 
   stringifier USVString toJSON();

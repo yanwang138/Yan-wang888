@@ -3256,7 +3256,7 @@ invoked, must run these steps:
  <li><p>If <a>this</a>'s <a for=URLHost>host</a> is an <a>IPv6 address</a>, then return
  "<code>ipv6</code>".
 
- <li><p>Assert: <a>this</a>'s <a for=URLHost>host</a> is an <a>domain</a>.
+ <li><p>Assert: <a>this</a>'s <a for=URLHost>host</a> is a <a>domain</a>.
 
  <li><p>Return "<code>domain</code>".
 </ol>

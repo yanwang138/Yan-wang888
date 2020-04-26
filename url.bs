@@ -3247,7 +3247,7 @@ invoked, must run these steps:
  <li><p>Return a new {{URLHost}} object whose <a for=URLHost>host</a> is <var>host</var>.
 </ol>
 
-<p>The <dfn attribute for=URLHost><code>type</code></dfn> attribute's getter, must run these steps:
+<p>The <dfn attribute for=URLHost><code>type</code></dfn> attribute's getter must run these steps:
 
 <ol>
  <li><p>If <a>this</a>'s <a for=URLHost>host</a> is an <a>IPv4 address</a>, then return
